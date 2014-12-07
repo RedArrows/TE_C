@@ -14,21 +14,40 @@
 @end
 
 @implementation LoginViewController{
-    PAImageView *_saber;
+    PAImageView *_photoImage;
+    __weak IBOutlet UILabel *username;
+    __weak IBOutlet UILabel *userjob;
+    __weak IBOutlet UILabel *login_warning;
+    __weak IBOutlet UIView *fieldBack;
 
+    __weak IBOutlet UITextField *HL_ID;
+    __weak IBOutlet UITextField *HL_password;
+}
+- (IBAction)loginClick:(id)sender {
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationController.navigationBar setBarTintColor:[UIColor redColor]];
     self.navigationController.navigationBar.hidden = YES;
-    _saber = [[PAImageView alloc]initWithFrame:CGRectMake(40, 40, 90, 90)
+    _photoImage = [[PAImageView alloc]initWithFrame:CGRectMake(40, 40, 90, 90)
                        backgroundProgressColor:[UIColor grayColor] progressColor:[UIColor greenColor]];
-    [self.view addSubview:_saber];
-    [_saber updateWithImage:[UIImage imageNamed:@"saberheader.png"] animated:YES];
+    [self.view addSubview:_photoImage];
+    [_photoImage updateWithImage:[UIImage imageNamed:@"saberheader.png"] animated:YES];
 
+    fieldBack.layer.borderWidth = 1;
+    fieldBack.layer.borderColor = [UIColor grayColor].CGColor;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(closeKeyboard)];
+    [self.view addGestureRecognizer:tap];
     
     // Do any additional setup after loading the view from its nib.
+}
+
+-(void)closeKeyboard{
+    [HL_ID resignFirstResponder];
+    [HL_password resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46A42FAC1A3457B9009B595B /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 46A42FAB1A3457B9009B595B /* background.png */; };
+		46A42FBA1A34A84E009B595B /* saber_1334h.png in Resources */ = {isa = PBXBuildFile; fileRef = 46A42FB61A34A84E009B595B /* saber_1334h.png */; };
+		46A42FBB1A34A84E009B595B /* saber_2208h.png in Resources */ = {isa = PBXBuildFile; fileRef = 46A42FB71A34A84E009B595B /* saber_2208h.png */; };
+		46A42FBC1A34A84E009B595B /* zhinai_960.png in Resources */ = {isa = PBXBuildFile; fileRef = 46A42FB81A34A84E009B595B /* zhinai_960.png */; };
+		46A42FBD1A34A84E009B595B /* zhinai_1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 46A42FB91A34A84E009B595B /* zhinai_1136.png */; };
 		C26089261A31580A009C4902 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C26089251A31580A009C4902 /* Default-568h@2x.png */; };
 		C260892F1A319437009C4902 /* PAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C260892E1A319437009C4902 /* PAImageView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C26089571A319494009C4902 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C26089321A319494009C4902 /* AFHTTPRequestOperation.m */; };
@@ -49,6 +54,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		46A42FAB1A3457B9009B595B /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		46A42FB61A34A84E009B595B /* saber_1334h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saber_1334h.png; sourceTree = "<group>"; };
+		46A42FB71A34A84E009B595B /* saber_2208h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saber_2208h.png; sourceTree = "<group>"; };
+		46A42FB81A34A84E009B595B /* zhinai_960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zhinai_960.png; sourceTree = "<group>"; };
+		46A42FB91A34A84E009B595B /* zhinai_1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zhinai_1136.png; sourceTree = "<group>"; };
 		C26089241A315630009C4902 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		C26089251A31580A009C4902 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C260892D1A319437009C4902 /* PAImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAImageView.h; sourceTree = "<group>"; };
@@ -126,6 +136,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46A42FAD1A345904009B595B /* tool */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = tool;
+			sourceTree = "<group>";
+		};
 		C260892C1A319437009C4902 /* PAImageView */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +214,11 @@
 		C260896C1A319B32009C4902 /* ls */ = {
 			isa = PBXGroup;
 			children = (
+				46A42FB61A34A84E009B595B /* saber_1334h.png */,
+				46A42FB71A34A84E009B595B /* saber_2208h.png */,
+				46A42FB81A34A84E009B595B /* zhinai_960.png */,
+				46A42FB91A34A84E009B595B /* zhinai_1136.png */,
+				46A42FAB1A3457B9009B595B /* background.png */,
 				C260896D1A319DC4009C4902 /* saberheader.png */,
 				C26089691A319B14009C4902 /* saber.png */,
 			);
@@ -224,6 +246,7 @@
 		C2FEB5D11A305602004B824C /* TE_Commissioner */ = {
 			isa = PBXGroup;
 			children = (
+				46A42FAD1A345904009B595B /* tool */,
 				C260896B1A319B32009C4902 /* images */,
 				C2FEB5F81A3059C4004B824C /* Lib */,
 				C2FEB5F91A3059C4004B824C /* Model */,
@@ -398,11 +421,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				C260896A1A319B14009C4902 /* saber.png in Resources */,
+				46A42FBA1A34A84E009B595B /* saber_1334h.png in Resources */,
 				C2FEB6011A305A29004B824C /* LoginViewController.xib in Resources */,
+				46A42FAC1A3457B9009B595B /* background.png in Resources */,
 				C260896E1A319DC4009C4902 /* saberheader.png in Resources */,
 				C2FEB5E01A305602004B824C /* Images.xcassets in Resources */,
 				C26089261A31580A009C4902 /* Default-568h@2x.png in Resources */,
 				C26089611A319494009C4902 /* saber.jpeg in Resources */,
+				46A42FBC1A34A84E009B595B /* zhinai_960.png in Resources */,
+				46A42FBB1A34A84E009B595B /* saber_2208h.png in Resources */,
+				46A42FBD1A34A84E009B595B /* zhinai_1136.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,10 +572,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage_n;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TE_Commissioner/PrefixHeader.pch";
 				INFOPLIST_FILE = TE_Commissioner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -557,10 +587,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage_n;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TE_Commissioner/PrefixHeader.pch";
 				INFOPLIST_FILE = TE_Commissioner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
