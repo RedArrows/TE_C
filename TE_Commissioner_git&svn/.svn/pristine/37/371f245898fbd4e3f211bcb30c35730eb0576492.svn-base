@@ -14,10 +14,6 @@
 		46A42FB51A34A7A4009B595B /* saber_2208h.png in Resources */ = {isa = PBXBuildFile; fileRef = 46A42FB41A34A7A4009B595B /* saber_2208h.png */; };
 		46C199211A3680DF0044D3B7 /* MyWaitingToDoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C1991F1A3680DF0044D3B7 /* MyWaitingToDoViewController.m */; };
 		46C199221A3680DF0044D3B7 /* MyWaitingToDoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46C199201A3680DF0044D3B7 /* MyWaitingToDoViewController.xib */; };
-		46C199581A369EC10044D3B7 /* SetInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C199561A369EC10044D3B7 /* SetInfoViewController.m */; };
-		46C199591A369EC10044D3B7 /* SetInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46C199571A369EC10044D3B7 /* SetInfoViewController.xib */; };
-		46C1995D1A36EA820044D3B7 /* ScanQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C1995B1A36EA820044D3B7 /* ScanQRCodeViewController.m */; };
-		46C1995E1A36EA820044D3B7 /* ScanQRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46C1995C1A36EA820044D3B7 /* ScanQRCodeViewController.xib */; };
 		C260892F1A319437009C4902 /* PAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C260892E1A319437009C4902 /* PAImageView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C26089571A319494009C4902 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C26089321A319494009C4902 /* AFHTTPRequestOperation.m */; };
 		C26089581A319494009C4902 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C26089341A319494009C4902 /* AFHTTPRequestOperationManager.m */; };
@@ -67,12 +63,6 @@
 		46AEAF761A35517E009C86BE /* MyWaitingToDoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWaitingToDoViewController.h; sourceTree = "<group>"; };
 		46C1991F1A3680DF0044D3B7 /* MyWaitingToDoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWaitingToDoViewController.m; sourceTree = "<group>"; };
 		46C199201A3680DF0044D3B7 /* MyWaitingToDoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyWaitingToDoViewController.xib; sourceTree = "<group>"; };
-		46C199551A369EC10044D3B7 /* SetInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetInfoViewController.h; sourceTree = "<group>"; };
-		46C199561A369EC10044D3B7 /* SetInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetInfoViewController.m; sourceTree = "<group>"; };
-		46C199571A369EC10044D3B7 /* SetInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetInfoViewController.xib; sourceTree = "<group>"; };
-		46C1995A1A36EA820044D3B7 /* ScanQRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanQRCodeViewController.h; sourceTree = "<group>"; };
-		46C1995B1A36EA820044D3B7 /* ScanQRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanQRCodeViewController.m; sourceTree = "<group>"; };
-		46C1995C1A36EA820044D3B7 /* ScanQRCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScanQRCodeViewController.xib; sourceTree = "<group>"; };
 		C26089241A315630009C4902 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		C260892D1A319437009C4902 /* PAImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAImageView.h; sourceTree = "<group>"; };
 		C260892E1A319437009C4902 /* PAImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAImageView.m; sourceTree = "<group>"; };
@@ -159,15 +149,9 @@
 		46AEAF751A355112009C86BE /* MyTodo */ = {
 			isa = PBXGroup;
 			children = (
-				46AEAF761A35517E009C86BE /* MyWaitingToDoViewController.h */,
 				46C1991F1A3680DF0044D3B7 /* MyWaitingToDoViewController.m */,
 				46C199201A3680DF0044D3B7 /* MyWaitingToDoViewController.xib */,
-				46C199551A369EC10044D3B7 /* SetInfoViewController.h */,
-				46C199561A369EC10044D3B7 /* SetInfoViewController.m */,
-				46C199571A369EC10044D3B7 /* SetInfoViewController.xib */,
-				46C1995A1A36EA820044D3B7 /* ScanQRCodeViewController.h */,
-				46C1995B1A36EA820044D3B7 /* ScanQRCodeViewController.m */,
-				46C1995C1A36EA820044D3B7 /* ScanQRCodeViewController.xib */,
+				46AEAF761A35517E009C86BE /* MyWaitingToDoViewController.h */,
 			);
 			name = MyTodo;
 			sourceTree = "<group>";
@@ -458,8 +442,6 @@
 				46A42FAC1A3457B9009B595B /* background.png in Resources */,
 				C260896E1A319DC4009C4902 /* saberheader.png in Resources */,
 				C2FEB5E01A305602004B824C /* Images.xcassets in Resources */,
-				46C199591A369EC10044D3B7 /* SetInfoViewController.xib in Resources */,
-				46C1995E1A36EA820044D3B7 /* ScanQRCodeViewController.xib in Resources */,
 				46A42FB31A34A047009B595B /* zhinai_960.png in Resources */,
 				C26089611A319494009C4902 /* saber.jpeg in Resources */,
 			);
@@ -488,8 +470,6 @@
 				C260895D1A319494009C4902 /* AFURLRequestSerialization.m in Sources */,
 				C2FEB6001A305A29004B824C /* LoginViewController.m in Sources */,
 				C26089671A319494009C4902 /* UIRefreshControl+AFNetworking.m in Sources */,
-				46C199581A369EC10044D3B7 /* SetInfoViewController.m in Sources */,
-				46C1995D1A36EA820044D3B7 /* ScanQRCodeViewController.m in Sources */,
 				C260895E1A319494009C4902 /* AFURLResponseSerialization.m in Sources */,
 				C260892F1A319437009C4902 /* PAImageView.m in Sources */,
 				46C199211A3680DF0044D3B7 /* MyWaitingToDoViewController.m in Sources */,
@@ -607,7 +587,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
-				CODE_SIGN_IDENTITY = "iPhone Developer: li peng (JP299Y7WSA)";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TE_Commissioner/PrefixHeader.pch";
@@ -615,7 +594,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "08815573-da40-4514-ab2b-a250595baf1d";
 			};
 			name = Debug;
 		};
@@ -624,7 +602,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
-				CODE_SIGN_IDENTITY = "iPhone Developer: li peng (JP299Y7WSA)";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TE_Commissioner/PrefixHeader.pch";
@@ -632,7 +609,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "08815573-da40-4514-ab2b-a250595baf1d";
 			};
 			name = Release;
 		};

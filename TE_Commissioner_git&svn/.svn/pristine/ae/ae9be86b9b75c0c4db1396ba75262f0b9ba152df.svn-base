@@ -8,8 +8,6 @@
 
 #import "MyWaitingToDoViewController.h"
 #import "PAImageView.h"
-#import "SetInfoViewController.h"
-#import "ScanQRCodeViewController.h"
 
 @interface MyWaitingToDoViewController ()
 
@@ -22,11 +20,6 @@
     __weak IBOutlet UILabel *jobLabel;
     __weak IBOutlet UILabel *phoneLabel;
     PAImageView * _photoImage;
-    __weak IBOutlet UIButton *orderRatepaying;//预约缴税过户
-    __weak IBOutlet UIButton *checkRatePaying;//登记完税结果
-    
-    __weak IBOutlet UIButton *orderTransfer;//登记土地过户
-    __weak IBOutlet UIButton *checkTransfer;//登记过户结果
     
 }
 
@@ -35,45 +28,15 @@
     self.navigationController.navigationBar.barTintColor = [UIColor darkGrayColor];
     self.title = @"我的待办";
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName]];
+    NSLog(@"---->%@",self.navigationController.title);
     
     _photoImage = [[PAImageView alloc]initWithFrame:CGRectMake(15, 10, 60, 60)
                             backgroundProgressColor:[UIColor grayColor] progressColor:[UIColor greenColor]];
     [headView addSubview:_photoImage];
     [_photoImage updateWithImage:[UIImage imageNamed:@"saberheader.png"] animated:YES];
     
-    
-    UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(openSliderMenu)];
-    self.navigationItem.leftBarButtonItem = item;
-    
-    
     // Do any additional setup after loading the view from its nib.
 }
-
--(void)openSliderMenu{
-    NSLog(@"open slider Menu");
-}
-
-
-/*预约缴税过户 2001
- *登记完税结果 2002
- *登记土地过户 2003
- *登记过户结果 2004
- */
-- (IBAction)clickBtn:(id)sender {
-    UIButton *btn = (UIButton *)sender;
-    NSLog(@"---执行-->%li",(long)btn.tag);
-}
-- (IBAction)setClick:(id)sender {
-    SetInfoViewController *setVC = [[SetInfoViewController alloc]initWithNibName:@"SetInfoViewController" bundle:[NSBundle mainBundle]];
-    [self.navigationController pushViewController:setVC animated:YES];
-}
-
-- (IBAction)scanQRCode:(id)sender {
-    NSLog(@"=-----------------");
-    ScanQRCodeViewController *SQVC = [[ScanQRCodeViewController alloc]initWithNibName:@"ScanQRCodeViewController" bundle:[NSBundle mainBundle]];
-    [self.navigationController pushViewController:SQVC animated:YES];
-}
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
