@@ -10,6 +10,7 @@
 #import "PAImageView.h"
 #import "SetInfoViewController.h"
 #import "ScanQRCodeViewController.h"
+#import "MyOnTheWayListViewController.h"
 
 @interface MyWaitingToDoViewController ()
 
@@ -41,9 +42,9 @@
     [headView addSubview:_photoImage];
     [_photoImage updateWithImage:[UIImage imageNamed:@"saberheader.png"] animated:YES];
     
+    [Tool setLeftMenuBarBtn:self];
     
-    UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(openSliderMenu)];
-    self.navigationItem.leftBarButtonItem = item;
+
     
     
     // Do any additional setup after loading the view from its nib.
@@ -62,6 +63,19 @@
 - (IBAction)clickBtn:(id)sender {
     UIButton *btn = (UIButton *)sender;
     NSLog(@"---执行-->%li",(long)btn.tag);
+    switch (btn.tag) {
+        case 2001:
+        {
+            MyOnTheWayListViewController* otwVC = [[MyOnTheWayListViewController alloc]initWithNibName:@"MyOnTheWayListViewController" bundle:[NSBundle mainBundle]];
+            [self.navigationController pushViewController:otwVC animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    
 }
 - (IBAction)setClick:(id)sender {
     SetInfoViewController *setVC = [[SetInfoViewController alloc]initWithNibName:@"SetInfoViewController" bundle:[NSBundle mainBundle]];
@@ -76,10 +90,10 @@
         
     }else{
         NSLog(@">_<没摄像头扫你妹的🐴！");
+        
     }
     
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

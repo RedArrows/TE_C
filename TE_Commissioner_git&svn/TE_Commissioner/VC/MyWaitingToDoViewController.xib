@@ -52,9 +52,9 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4RL-Fv-t4N">
-                            <rect key="frame" x="275" y="10" width="37" height="20"/>
+                            <rect key="frame" x="292" y="53" width="20" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="设置">
+                            <state key="normal" backgroundImage="mark_set.png">
                                 <color key="titleColor" red="0.24784128289473681" green="0.96078431372549022" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -73,7 +73,7 @@
                             <rect key="frame" x="10" y="0.0" width="72" height="72"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                            <state key="normal" title="0">
+                            <state key="normal" title="0" backgroundImage="circle_green.png">
                                 <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -88,7 +88,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.2470588235" green="0.6705882353" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="wX9-nh-CVb">
                     <rect key="frame" x="114" y="267" width="92" height="92"/>
@@ -98,7 +98,7 @@
                             <rect key="frame" x="10" y="0.0" width="72" height="72"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                            <state key="normal" title="0">
+                            <state key="normal" title="0" backgroundImage="circle_green.png">
                                 <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -113,7 +113,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.2470588235" green="0.6705882353" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="Y37-qL-UGB">
                     <rect key="frame" x="217" y="267" width="92" height="92"/>
@@ -123,7 +123,7 @@
                             <rect key="frame" x="10" y="0.0" width="72" height="72"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                            <state key="normal" title="0">
+                            <state key="normal" title="0" backgroundImage="circle_green.png">
                                 <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -138,7 +138,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.2470588235" green="0.6705882353" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="Xjj-z0-G1S">
                     <rect key="frame" x="11" y="161" width="92" height="92"/>
@@ -148,8 +148,8 @@
                             <rect key="frame" x="10" y="0.0" width="72" height="72"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                            <state key="normal" title="30">
-                                <color key="titleColor" red="1" green="0.75044415990000002" blue="0.29443600489999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="30" backgroundImage="circle_yellow.png">
+                                <color key="titleColor" red="0.70980392156862748" green="0.60392156862745094" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
                                 <action selector="clickBtn:" destination="-1" eventType="touchUpInside" id="wuS-X9-QCD"/>
@@ -163,7 +163,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.2470588235" green="0.6705882353" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="aFR-PV-fJi">
                     <rect key="frame" x="11" y="373" width="92" height="92"/>
@@ -173,7 +173,7 @@
                             <rect key="frame" x="10" y="0.0" width="72" height="72"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                            <state key="normal" title="0">
+                            <state key="normal" title="0" backgroundImage="circle_green.png">
                                 <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
@@ -185,7 +185,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.2470588235" green="0.6705882353" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="Y7N-rr-L7X">
                     <rect key="frame" x="114" y="373" width="92" height="92"/>
@@ -202,12 +202,12 @@
                             <rect key="frame" x="10" y="0.0" width="72" height="72"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                            <state key="normal" title="0">
+                            <state key="normal" title="0" backgroundImage="circle_green.png">
                                 <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.2470588235" green="0.6705882353" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="ng6-dX-svD">
                     <rect key="frame" x="217" y="373" width="92" height="92"/>
@@ -217,7 +217,7 @@
                             <rect key="frame" x="10" y="0.0" width="72" height="72"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                            <state key="normal" title="0">
+                            <state key="normal" title="0" backgroundImage="circle_green.png">
                                 <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
@@ -229,7 +229,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.2470588235" green="0.6705882353" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="扫描业务转结单上的二维码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XM4-SX-or0">
                     <rect key="frame" x="60" y="547" width="200" height="21"/>
@@ -246,15 +246,15 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yjO-Vd-CZG">
                     <rect key="frame" x="35" y="506" width="250" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="     扫描二维码" backgroundImage="background.png">
+                    <state key="normal" title="     扫描二维码" backgroundImage="btn_green.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="scanQRCode:" destination="-1" eventType="touchUpInside" id="UrT-S7-YHf"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="saber.png" id="ENt-tH-n3G">
-                    <rect key="frame" x="96" y="511" width="26" height="26"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mark_QRCode_white.png" id="ENt-tH-n3G">
+                    <rect key="frame" x="96" y="511" width="22" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
             </subviews>
@@ -263,8 +263,11 @@
         </view>
     </objects>
     <resources>
-        <image name="background.png" width="416" height="84"/>
-        <image name="saber.png" width="600" height="862"/>
+        <image name="btn_green.png" width="500" height="80"/>
+        <image name="circle_green.png" width="110" height="110"/>
+        <image name="circle_yellow.png" width="110" height="110"/>
+        <image name="mark_QRCode_white.png" width="32" height="32"/>
+        <image name="mark_set.png" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

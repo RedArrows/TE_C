@@ -24,7 +24,13 @@
     __weak IBOutlet UITextField *HL_ID;
     __weak IBOutlet UITextField *HL_password;
     __weak IBOutlet UIButton *loginBtn;
+    
+    __weak IBOutlet UIImageView *rememberCheckBox;
+    
 }
+
+
+
 - (IBAction)loginClick:(id)sender {
     MyWaitingToDoViewController *wtdVC = [[MyWaitingToDoViewController alloc]initWithNibName:@"MyWaitingToDoViewController" bundle:[NSBundle mainBundle]];
     
@@ -59,6 +65,12 @@
     [HL_ID resignFirstResponder];
     [HL_password resignFirstResponder];
 }
+
+- (IBAction)rememberUsername:(id)sender {
+    NSLog(@"记住账号信息！");
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

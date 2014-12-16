@@ -12,6 +12,7 @@
                 <outlet property="fieldBack" destination="R8a-BG-36A" id="I5Z-35-EUt"/>
                 <outlet property="loginBtn" destination="3Bz-pA-twk" id="Lo4-dP-hZX"/>
                 <outlet property="login_warning" destination="QhV-hl-qhW" id="YyD-1M-Rb8"/>
+                <outlet property="rememberCheckBox" destination="e87-kx-7Tt" id="APP-uY-HSO"/>
                 <outlet property="userjob" destination="tPB-hP-Iqp" id="cDe-lc-Abq"/>
                 <outlet property="username" destination="dJ1-FA-rhY" id="h3V-Wl-Qzo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -64,10 +65,16 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="owo-av-jkM">
-                                    <rect key="frame" x="40" y="52" width="182" height="30"/>
+                                    <rect key="frame" x="40" y="55" width="182" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mark_username.png" translatesAutoresizingMaskIntoConstraints="NO" id="PpR-8Z-8iI">
+                                    <rect key="frame" x="8" y="6" width="25" height="25"/>
+                                </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mark_password.png" translatesAutoresizingMaskIntoConstraints="NO" id="Cl6-La-zFG">
+                                    <rect key="frame" x="7" y="57" width="25" height="25"/>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <userDefinedRuntimeAttributes>
@@ -86,21 +93,13 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f20-YD-A6P">
-                            <rect key="frame" x="135" y="135" width="100" height="30"/>
-                            <state key="normal" title="记住工号信息">
+                            <rect key="frame" x="76" y="188" width="133" height="30"/>
+                            <state key="normal" title="       记住工号信息">
                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Bz-pA-twk">
-                            <rect key="frame" x="65" y="173" width="190" height="30"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                            <state key="normal" title="登          录" backgroundImage="background.png">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
                             <connections>
-                                <action selector="loginClick:" destination="-1" eventType="touchUpInside" id="qZh-0Y-0VR"/>
+                                <action selector="rememberUsername:" destination="-1" eventType="touchUpInside" id="3fE-4c-elC"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="北京链家房地产经纪有限公司" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBh-6J-WGt">
@@ -109,6 +108,20 @@
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Bz-pA-twk">
+                            <rect key="frame" x="65" y="150" width="190" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <state key="normal" title="登          录" backgroundImage="btn_green.png">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="loginClick:" destination="-1" eventType="touchUpInside" id="qZh-0Y-0VR"/>
+                            </connections>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="checkBox_selected.png" translatesAutoresizingMaskIntoConstraints="NO" id="e87-kx-7Tt">
+                            <rect key="frame" x="92" y="195" width="16" height="16"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
@@ -118,7 +131,10 @@
         </view>
     </objects>
     <resources>
-        <image name="background.png" width="416" height="84"/>
+        <image name="btn_green.png" width="500" height="80"/>
+        <image name="checkBox_selected.png" width="36" height="36"/>
+        <image name="mark_password.png" width="32" height="36"/>
+        <image name="mark_username.png" width="32" height="36"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
