@@ -1,0 +1,45 @@
+//
+//  Tool.m
+//  TE_Commissioner
+//
+//  Created by 时瑶 on 14/12/16.
+//  Copyright (c) 2014年 shiyao. All rights reserved.
+//
+
+#import "Tool.h"
+
+
+@implementation Tool
+
+static Tool *tool = nil;
+
++(instancetype)instance{
+    @synchronized(self){
+        if (!tool) {
+            tool = [[Tool alloc]init];
+        }
+        return tool;
+    }
+}
+
++(void)setLeftMenuBarBtn:(UIViewController*)vc{
+    if (!vc.navigationController) {
+        return;
+    }
+    UIButton *leftBarBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    [leftBarBtn setFrame:CGRectMake(0, 0, 60, 30)];
+    [leftBarBtn setBackgroundImage:[UIImage imageNamed:@"btn_menu"] forState:UIControlStateNormal];
+    [leftBarBtn addTarget:self action:@selector(openSliderMenu) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    UIBarButtonItem * item = [[UIBarButtonItem alloc]initWithCustomView:leftBarBtn];
+    vc.navigationItem.leftBarButtonItem = item;
+}
+
++(void)openSliderMenu{
+    //去警告而已
+    NSLog(@"弹出侧滑菜单——通配");
+}
+
+
+@end

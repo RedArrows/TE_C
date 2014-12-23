@@ -1,0 +1,60 @@
+//
+//  MyOnTheWayListViewController.m
+//  TE_Commissioner
+//
+//  Created by 时瑶 on 14/12/16.
+//  Copyright (c) 2014年 shiyao. All rights reserved.
+//
+
+#import "MyOnTheWayListViewController.h"
+#import "YDListMenuView.h"
+
+
+@interface MyOnTheWayListViewController ()<ListViewChooseDelegate>
+
+@property (weak, nonatomic) IBOutlet UIButton *selectedMunu;
+
+- (IBAction)selectedMenuPressed:(UIButton *)sender;
+
+@end
+
+@implementation MyOnTheWayListViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.title = @"我的在途单";
+    [Tool setLeftMenuBarBtn:self];
+    
+    // Do any additional setup after loading the view from its nib.
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+- (IBAction)selectedMenuPressed:(UIButton *)sender
+{
+    YDListMenuView *listView = [[YDListMenuView alloc] initBackViewFrame:CGRectMake(0,64,320,568) withListViewPoint:CGPointMake(160, 40) withDelegate:self];
+    
+    listView.dataArray = [NSMutableArray arrayWithArray:@[@"搜索经纪人/主办",@"搜索买方/卖方",@"搜索交易编号",@"报单日期：全部",@{@"特殊业务单":@[@"挂起",@"连环单",@"失效单"]},@{@"交易产品:全部":@[@"全款业务",@"全款赎楼",@"商业贷款",@"商贷.赎楼",@"商贷.垫资",@"补按揭.商贷",@"公积金.市属",@"补按揭.市属",@"公积金.市属.垫资",@"公积金.市属.赎楼",@"公积金.市属.垫资",@"公积金.国管",@"补按揭.国管"]}]];
+    
+    [self.view addSubview:listView];
+}
+
+-(void) chooseAtTitle:(NSString *)title index:(NSInteger)index
+{
+    NSLog(@"%@--------",title);
+}
+
+@end

@@ -1,0 +1,256 @@
+//
+//  YDListMenuView.m
+//  YDMenu
+//
+//  Created by liuyunda on 14/12/9.
+//  Copyright (c) 2014年 liuyunda. All rights reserved.
+//
+
+#import "YDListMenuView.h"
+#import "YDTableCell.h"
+
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+#define DEGREES_TO_RADIANS(angle) ((angle)/180.0 *M_PI)
+
+@interface YDListMenuView()
+{
+    NSInteger currentExtendSection;
+    NSArray *secondListArray;
+    YDTableCell *ydCell;
+    UIImageView *lastSelectedArrowView;
+    UIImageView *currentIV;
+    UIView *baseBackView;
+    CGPoint listViewPoint;
+}
+
+@property (nonatomic, strong) UITableView *mTableView;
+@property (nonatomic, strong) UITableView *secondListTableView;
+
+@property (nonatomic, strong) UIView *fatherView;
+
+@end
+
+
+
+@implementation YDListMenuView
+
+- (id)initBackViewFrame:(CGRect)frame withListViewPoint:(CGPoint)point withDelegate:(id)delegate
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        currentExtendSection = -1;
+        
+        listViewPoint = point;
+        self.listDelegate = delegate;
+        self.fatherView = ((UIViewController*)delegate).view;
+        
+        baseBackView = [[UIView alloc]initWithFrame:frame];
+        baseBackView.backgroundColor = [UIColor blackColor];
+        baseBackView.alpha = 0.1;
+        
+        UITapGestureRecognizer *bgTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(bgTappedAction:)];
+        bgTap.delegate = self;
+        [self addGestureRecognizer:bgTap];
+        
+        [self.fatherView addSubview:baseBackView];
+        
+        if (currentExtendSection==-1) {
+            self.mTableView = [[UITableView alloc] initWithFrame:CGRectMake(listViewPoint.x,listViewPoint.y,140,0) style:UITableViewStylePlain];
+            self.mTableView.delegate = self;
+            self.mTableView.dataSource = self;
+            self.mTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+            self.mTableView.backgroundColor = [UIColor clearColor];
+
+            
+            [self addSubview:self.mTableView];
+            
+            CGRect rect = self.mTableView.frame;
+            
+            rect.size.height = 480;
+            
+            [UIView animateWithDuration:0.3 animations:^{
+                baseBackView.alpha = 0.5;
+                self.mTableView.frame = rect;
+            } completion:^(BOOL finished) {
+                self.mTableView.backgroundColor = UIColorFromRGB(0x7f7f7f);
+            }];
+            
+            [self.mTableView reloadData];
+            currentExtendSection = 0;
+        }else{
+            [self hideExtendedChooseView];
+        }
+    }
+    return self;
+}
+
+-(void)bgTappedAction:(UITapGestureRecognizer *)tap
+{
+    [self hideExtendedChooseView];
+}
+
+-(void)hideExtendedChooseView
+{
+    self.mTableView.backgroundColor = [UIColor clearColor];
+    currentExtendSection = -1;
+    
+    CGRect rect1 = self.mTableView.frame;
+    rect1.size.height = 0;
+    
+    CGRect rect2 = self.secondListTableView.frame;
+    rect2.size.height = 0;
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        baseBackView.alpha = 0.0;
+
+        self.mTableView.frame = rect1;
+        self.secondListTableView.frame = rect2;
+        
+    }completion:^(BOOL finished) {
+        
+        [baseBackView removeFromSuperview];
+        [self.mTableView removeFromSuperview];
+        [self.secondListTableView removeFromSuperview];
+        [self removeFromSuperview];
+        self.secondListTableView = nil;
+    }];
+}
+
+#pragma mark -- UITableView Delegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 40;
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (tableView == self.secondListTableView) {
+        return [secondListArray count];
+    }
+    return [self.dataArray count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView ==self.mTableView) {
+        static NSString * cellIdentifier = @"YDCellIdentifier";
+        ydCell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (!ydCell) {
+            ydCell = (YDTableCell *)[[[UINib nibWithNibName:@"YDTableCell" bundle:nil] instantiateWithOwner:self options:nil]objectAtIndex:0];
+            ydCell.backgroundColor = UIColorFromRGB(0x1fac55);
+        }
+        
+        ydCell.arrowView.tag = indexPath.row;
+        id object = [self.dataArray objectAtIndex:indexPath.row];
+        if ([object isKindOfClass:[NSString class]]) {
+            ydCell.cellLable.text = [self.dataArray objectAtIndex:indexPath.row];
+            ydCell.arrowView.image = [UIImage imageNamed:@"mark_Magnifier_gray"];
+
+        }else{
+            ydCell.cellLable.text = [[((NSMutableDictionary *)object) allKeys] firstObject];
+            ydCell.arrowView.image = [UIImage imageNamed:@"arrow_down"];
+        }
+        return ydCell;
+    }else{
+        static NSString * cellIdentifier = @"secondCellIdentifier";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.backgroundColor = UIColorFromRGB(0x178842);
+        }
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
+        cell.textLabel.text = [secondListArray objectAtIndex:indexPath.row];
+        return cell;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (!self.secondListTableView) {
+        self.secondListTableView = [[UITableView alloc] initWithFrame:CGRectMake(listViewPoint.x,indexPath.row*40+listViewPoint.y,140,262) style:UITableViewStylePlain];
+        self.secondListTableView.delegate = self;
+        self.secondListTableView.dataSource = self;
+        self.secondListTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.secondListTableView.backgroundColor = [UIColor clearColor];
+
+        [self addSubview:self.secondListTableView];
+        [self bringSubviewToFront:self.mTableView];
+        
+        CGRect rect = self.secondListTableView.frame;
+        
+        rect.origin.x = listViewPoint.x-140;
+        [UIView animateWithDuration:0.3 animations:^{
+            self.secondListTableView.frame = rect;
+        }];
+        currentExtendSection = 0;
+    }
+    
+    if (tableView == self.mTableView) {
+        
+        if (currentIV) {
+            [UIView animateWithDuration:0.3 animations:^{
+                currentIV.transform = CGAffineTransformRotate(currentIV.transform, DEGREES_TO_RADIANS(-90));
+            }];
+            currentIV = nil;
+        }
+        
+        if ([[self.dataArray objectAtIndex:indexPath.row] isKindOfClass:[NSDictionary class]]) {
+            id object = [self.dataArray objectAtIndex:indexPath.row];
+            NSString *keyString = [[((NSMutableDictionary *)object) allKeys] firstObject];
+            secondListArray = [object objectForKey:keyString];
+            
+            CGRect rect = self.secondListTableView.frame;
+            
+            rect.origin.y = indexPath.row*40+listViewPoint.y;
+            [UIView animateWithDuration:0.3 animations:^{
+                self.secondListTableView.frame = rect;
+            }];
+            
+            currentExtendSection = 0;
+            
+            currentIV= (UIImageView *)[self.fatherView viewWithTag:indexPath.row];
+            
+            [UIView animateWithDuration:0.3 animations:^{
+                currentIV.transform = CGAffineTransformRotate(currentIV.transform, DEGREES_TO_RADIANS(90));
+            }];
+            
+            [self.secondListTableView reloadData];
+            self.mTableView.bounces = NO;
+            
+        }else{
+            
+            self.mTableView.bounces = YES;
+            [self.secondListTableView removeFromSuperview];
+            self.secondListTableView = nil;
+            
+            [self hideExtendedChooseView];
+
+        }
+    }
+
+    if ([self.listDelegate respondsToSelector:@selector(chooseAtTitle:index:)]){
+        if (tableView == self.mTableView) {
+            [self.listDelegate chooseAtTitle:[self.dataArray objectAtIndex:indexPath.row] index:indexPath.row];
+        }else{
+            [self.listDelegate chooseAtTitle:[secondListArray objectAtIndex:indexPath.row] index:indexPath.row];
+            [self hideExtendedChooseView];
+        }
+    }
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if ([touch.view isKindOfClass:[self class]]) {
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
+@end

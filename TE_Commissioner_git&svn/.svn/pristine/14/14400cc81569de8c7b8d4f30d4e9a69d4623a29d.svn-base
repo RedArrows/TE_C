@@ -1,0 +1,17 @@
+//
+//  OptionsTableViewCell.h
+//  TE_Commissioner
+//
+//  Created by 时瑶 on 14/12/18.
+//  Copyright (c) 2014年 shiyao. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "OptionDetailModel.h"
+
+@interface OptionsTableViewCell : UITableViewCell
+@property (nonatomic,strong)OptionDetailModel *model;
+
+-(void)fillDataWithModel:(OptionDetailModel *)model;
+
+@end
