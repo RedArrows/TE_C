@@ -1,0 +1,21 @@
+//
+//  ResponseModel.h
+//  TE_Commissioner
+//
+//  Created by 时瑶 on 14/12/23.
+//  Copyright (c) 2014年 shiyao. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface ResponseModel : NSObject
+
+@property (nonatomic,assign)BOOL isSuccessed;
+@property (nonatomic,assign)NSInteger state;
+@property (nonatomic,copy)NSString *message;
+@property (nonatomic,strong)id data;
+
+-(id)initWithJson:(id)json type:(URLTYPE)type;
+
+
+@end

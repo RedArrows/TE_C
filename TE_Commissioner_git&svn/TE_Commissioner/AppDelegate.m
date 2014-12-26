@@ -21,8 +21,6 @@
     
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[LoginViewController alloc]init]];
     
-    CGRect markRect = [@"感冒了好蛋疼！" boundingRectWithSize:CGSizeMake(1000, 15) options:0 attributes:nil context:nil];
-    NSLogRect(markRect);
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
