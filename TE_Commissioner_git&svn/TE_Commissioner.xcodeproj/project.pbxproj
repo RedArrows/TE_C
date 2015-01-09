@@ -62,6 +62,10 @@
 		466511A91A5B675B00F16D80 /* CheckTransferLandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 466511A71A5B675B00F16D80 /* CheckTransferLandViewController.m */; };
 		466511AA1A5B675B00F16D80 /* CheckTransferLandViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 466511A81A5B675B00F16D80 /* CheckTransferLandViewController.xib */; };
 		466511AE1A5B7F3200F16D80 /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 466511AD1A5B7F3200F16D80 /* DatePickerView.m */; };
+		466511B01A5BBA0800F16D80 /* mark_yes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 466511AF1A5BBA0800F16D80 /* mark_yes@2x.png */; };
+		466511B41A5BCCDB00F16D80 /* OpinionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 466511B21A5BCCDB00F16D80 /* OpinionViewController.m */; };
+		466511B51A5BCCDB00F16D80 /* OpinionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 466511B31A5BCCDB00F16D80 /* OpinionViewController.xib */; };
+		466511BC1A5BDB5900F16D80 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 466511BB1A5BDB5900F16D80 /* MBProgressHUD.m */; };
 		466BE6251A4BBC6F00224510 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 466BE6151A4BBC6F00224510 /* MJRefresh.bundle */; };
 		466BE6261A4BBC6F00224510 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 466BE6181A4BBC6F00224510 /* MJRefreshBaseView.m */; };
 		466BE6271A4BBC6F00224510 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 466BE61A1A4BBC6F00224510 /* MJRefreshConst.m */; };
@@ -235,6 +239,12 @@
 		466511A81A5B675B00F16D80 /* CheckTransferLandViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckTransferLandViewController.xib; sourceTree = "<group>"; };
 		466511AC1A5B7F3200F16D80 /* DatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerView.h; sourceTree = "<group>"; };
 		466511AD1A5B7F3200F16D80 /* DatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerView.m; sourceTree = "<group>"; };
+		466511AF1A5BBA0800F16D80 /* mark_yes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mark_yes@2x.png"; sourceTree = "<group>"; };
+		466511B11A5BCCDB00F16D80 /* OpinionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpinionViewController.h; sourceTree = "<group>"; };
+		466511B21A5BCCDB00F16D80 /* OpinionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpinionViewController.m; sourceTree = "<group>"; };
+		466511B31A5BCCDB00F16D80 /* OpinionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpinionViewController.xib; sourceTree = "<group>"; };
+		466511BA1A5BDB5900F16D80 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		466511BB1A5BDB5900F16D80 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		466BE6151A4BBC6F00224510 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
 		466BE6161A4BBC6F00224510 /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
 		466BE6171A4BBC6F00224510 /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
@@ -440,6 +450,7 @@
 		4641D3CF1A3AE1EC000DEA0F /* img */ = {
 			isa = PBXGroup;
 			children = (
+				466511AF1A5BBA0800F16D80 /* mark_yes@2x.png */,
 				4664598C1A5A8B1300017C75 /* mark_tip@2x.png */,
 				4664598D1A5A8B1300017C75 /* mark_yes.png */,
 				CD0CBF711A593AB800526240 /* cellSelected@2x.png */,
@@ -495,6 +506,15 @@
 				466511AD1A5B7F3200F16D80 /* DatePickerView.m */,
 			);
 			path = datePickerView;
+			sourceTree = "<group>";
+		};
+		466511B91A5BDB5900F16D80 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				466511BA1A5BDB5900F16D80 /* MBProgressHUD.h */,
+				466511BB1A5BDB5900F16D80 /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		466BE6141A4BBC6F00224510 /* MJRefresh */ = {
@@ -553,7 +573,7 @@
 			path = ListDetailMidMenu;
 			sourceTree = "<group>";
 		};
-		46871F6F1A401F390042B540 /* MyOnWayList */ = {
+		46871F6F1A401F390042B540 /* MyList */ = {
 			isa = PBXGroup;
 			children = (
 				46871F701A401F780042B540 /* MyOnTheWayListViewController.h */,
@@ -572,7 +592,7 @@
 				CD1C57AB1A514D0C00CE8FDF /* DXAlertView.h */,
 				CD1C57AC1A514D0C00CE8FDF /* DXAlertView.m */,
 			);
-			name = MyOnWayList;
+			name = MyList;
 			sourceTree = "<group>";
 		};
 		46A42FAD1A345904009B595B /* tool */ = {
@@ -601,6 +621,9 @@
 				46C1995F1A37ECF60044D3B7 /* ResultForQRCodeViewController.h */,
 				46C199601A37ECF60044D3B7 /* ResultForQRCodeViewController.m */,
 				46C199611A37ECF60044D3B7 /* ResultForQRCodeViewController.xib */,
+				466511B11A5BCCDB00F16D80 /* OpinionViewController.h */,
+				466511B21A5BCCDB00F16D80 /* OpinionViewController.m */,
+				466511B31A5BCCDB00F16D80 /* OpinionViewController.xib */,
 			);
 			name = MyTodo_main;
 			sourceTree = "<group>";
@@ -778,6 +801,7 @@
 		C2FEB5F81A3059C4004B824C /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				466511B91A5BDB5900F16D80 /* MBProgressHUD */,
 				466BE6331A4BC45D00224510 /* PAImageView */,
 				466BE6141A4BBC6F00224510 /* MJRefresh */,
 				C26089301A319494009C4902 /* AFNetworking */,
@@ -818,7 +842,7 @@
 				4632EABD1A50666F00CE951C /* AllResult */,
 				466BE62D1A4BC00300224510 /* ListDetail */,
 				CD681B401A42E5CD00DEF00A /* Menu */,
-				46871F6F1A401F390042B540 /* MyOnWayList */,
+				46871F6F1A401F390042B540 /* MyList */,
 				46AEAF751A355112009C86BE /* MyTodo_main */,
 				C2FEB6021A305ADB004B824C /* Login */,
 			);
@@ -938,7 +962,7 @@
 					};
 					C2FEB5E71A305603004B824C = {
 						CreatedOnToolsVersion = 6.0.1;
-						DevelopmentTeam = 7T77VPE242;
+						DevelopmentTeam = DVBZBD9KL3;
 						TestTargetID = C2FEB5CE1A305602004B824C;
 					};
 				};
@@ -967,6 +991,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				466511B01A5BBA0800F16D80 /* mark_yes@2x.png in Resources */,
 				466BE6431A4BF29600224510 /* item_back_white@2x.png in Resources */,
 				4641D3FB1A3AE1EC000DEA0F /* mark_QRCode_white@2x.png in Resources */,
 				4641D40B1A3AE1EC000DEA0F /* btn_menu@2x.png in Resources */,
@@ -987,6 +1012,7 @@
 				CD0CBF701A592D9800526240 /* menuLeft@2x.png in Resources */,
 				4641D3F61A3AE1EC000DEA0F /* mark_password@2x.png in Resources */,
 				466BE64C1A4C03CB00224510 /* white_block@2x.png in Resources */,
+				466511B51A5BCCDB00F16D80 /* OpinionViewController.xib in Resources */,
 				4641D3F21A3AE1EC000DEA0F /* arrow_left@2x.png in Resources */,
 				46F0F7521A514E7700B3DBE8 /* OrderRatepayingResultViewController.xib in Resources */,
 				4641D40D1A3AE1EC000DEA0F /* menu_back@2x.png in Resources */,
@@ -1089,6 +1115,7 @@
 				CD681B531A43BE7100DEF00A /* TEMenuNoPicCell.m in Sources */,
 				C260895D1A319494009C4902 /* AFURLRequestSerialization.m in Sources */,
 				463148971A47B2C000E68092 /* ListModel.m in Sources */,
+				466511BC1A5BDB5900F16D80 /* MBProgressHUD.m in Sources */,
 				C2FEB6001A305A29004B824C /* LoginViewController.m in Sources */,
 				C26089671A319494009C4902 /* UIRefreshControl+AFNetworking.m in Sources */,
 				46C199581A369EC10044D3B7 /* SetInfoViewController.m in Sources */,
@@ -1113,6 +1140,7 @@
 				46871F731A401F780042B540 /* MyOnTheWayListViewController.m in Sources */,
 				46F0F7621A52877C00B3DBE8 /* UserModel.m in Sources */,
 				466BE6261A4BBC6F00224510 /* MJRefreshBaseView.m in Sources */,
+				466511B41A5BCCDB00F16D80 /* OpinionViewController.m in Sources */,
 				466BE6291A4BBC6F00224510 /* MJRefreshHeaderView.m in Sources */,
 				C26089681A319494009C4902 /* UIWebView+AFNetworking.m in Sources */,
 				463148A01A47FBC100E68092 /* ListItemTableViewCell.m in Sources */,
@@ -1237,8 +1265,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Homelink Real Estate Agency Co.,Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Homelink Real Estate Agency Co.,Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: li peng (JP299Y7WSA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: li peng (JP299Y7WSA)";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TE_Commissioner/PrefixHeader.pch";
@@ -1246,7 +1274,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6390336b-5193-49d0-94a2-bf2fc377332c";
+				PROVISIONING_PROFILE = "a3d2e915-e9d6-4733-b4fd-45fb0b9f34d2";
 			};
 			name = Debug;
 		};
@@ -1255,8 +1283,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Homelink Real Estate Agency Co.,Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Homelink Real Estate Agency Co.,Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: li peng (JP299Y7WSA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: li peng (JP299Y7WSA)";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/TE_Commissioner/PrefixHeader.pch";
@@ -1264,7 +1292,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6390336b-5193-49d0-94a2-bf2fc377332c";
+				PROVISIONING_PROFILE = "a3d2e915-e9d6-4733-b4fd-45fb0b9f34d2";
 			};
 			name = Release;
 		};

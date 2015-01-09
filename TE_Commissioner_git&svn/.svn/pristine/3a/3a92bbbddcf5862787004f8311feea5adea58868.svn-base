@@ -1,0 +1,291 @@
+//
+//  Tool.m
+//  TE_Commissioner
+//
+//  Created by 时瑶 on 14/12/16.
+//  Copyright (c) 2014年 shiyao. All rights reserved.
+//
+
+#import "Tool.h"
+#import "TEMenuViewController.h"
+#import "MyOnTheWayListViewController.h"
+#import "ScanQRCodeViewController.h"
+#import "MyWaitingToDoViewController.h"
+#import "ListDetailViewController.h"
+
+#import <objc/runtime.h>
+
+
+
+
+@implementation UIViewController(muban)
+
+static NSString * key_VCType = @"key_VCType";
+
+-(void)setVCType:(VCTYPE)VCType{
+        objc_setAssociatedObject(self, (__bridge const void *)(key_VCType), [NSNumber numberWithInteger:VCType], OBJC_ASSOCIATION_RETAIN);
+}
+-(VCTYPE)VCType{
+    return [objc_getAssociatedObject(self, (__bridge const void *)(key_VCType)) integerValue];
+}
+
+@end
+
+@implementation Tool
+
+
+
+static Tool *tool = nil;
+
++(instancetype)instance{
+    @synchronized(self){
+        if (!tool) {
+            tool = [[Tool alloc]init];
+        }
+        return tool;
+    }
+}
+
++(void)setLeftMenuBarBtn:(UIViewController*)vc{
+    if (!vc.navigationController) {
+        return;
+    }
+    
+    UIButton *leftBarBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    [leftBarBtn setFrame:CGRectMake(0, 0, 70, 30)];
+    [leftBarBtn setBackgroundImage:[UIImage imageNamed:@"btn_menu"] forState:UIControlStateNormal];
+    [leftBarBtn addTarget:self action:@selector(openSliderMenu) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    UIBarButtonItem * item = [[UIBarButtonItem alloc]initWithCustomView:leftBarBtn];
+    vc.navigationItem.leftBarButtonItem = item;
+    
+    if (![Tool instance].mainVC ) {
+        [Tool instance].mainVC = vc.navigationController;
+    }
+}
+
++(void)setLeftBackBarBtn:(UIViewController*)vc{
+    if (!vc.navigationController) {
+        return;
+    }
+    
+    UIButton *leftBarBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    [leftBarBtn setFrame:CGRectMake(0, 0, 45, 20)];
+    [leftBarBtn setBackgroundImage:[UIImage imageNamed:@"item_back_white"] forState:UIControlStateNormal];
+    [leftBarBtn addTarget:self action:@selector(comeBack) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    UIBarButtonItem * item = [[UIBarButtonItem alloc]initWithCustomView:leftBarBtn];
+    vc.navigationItem.leftBarButtonItem = item;
+    
+    if (![Tool instance].mainVC ) {
+        [Tool instance].mainVC = vc.navigationController;
+    }
+}
+
++(void)comeBack{
+    [tool.mainVC popViewControllerAnimated:YES];
+}
+
++(void)openSliderMenu
+{
+    
+    if (![Tool instance].isShowMenu) {
+        
+        [Tool instance].isShowMenu = YES;
+        
+        if (![Tool instance].menuVC) {
+            [Tool instance].menuVC = [[TEMenuViewController alloc] init];
+            [tool.mainVC.view addSubview:[Tool instance].menuVC.view];
+        }
+        
+        [Tool instance].menuVC.view.frame = CGRectMake(-160, 20, 160, 504+44);
+        CGRect rect = [Tool instance].menuVC.view.frame;
+        rect.origin.x = 0;
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            [Tool instance].menuVC.view.frame = rect;
+        }];
+    }else{
+        [Tool instance].isShowMenu = NO;
+        [UIView animateWithDuration:0.3 animations:^{
+            [Tool instance].menuVC.view.frame = CGRectMake(-160, 20, 160, 504+44);
+        }];
+    }
+}
+
++(void)hidenMenu:(VCTYPE)type
+{
+    if (type>3) {
+        type = type-1;
+    }
+    [Tool instance].isShowMenu = NO;
+
+    [UIView animateWithDuration:0.3 animations:^{
+        [Tool instance].menuVC.view.frame = CGRectMake(-160, 20, 160, 504+44);
+    } completion:^(BOOL finished) {
+//        [[Tool instance].mainVC popViewControllerAnimated:YES];
+        [Tool openVCWithType:type];
+        NSLog(@"---->%ld",type);
+    }];
+}
+
++(void)openVCWithType:(VCTYPE)type{
+    BOOL isPush = NO;
+    UIViewController *willOpenVC = nil;
+    switch (type) {
+        case VC_MyWaitToDo:{
+            if (tool.mainVC.topViewController.VCType ==VC_MyWaitToDo) {
+                break;
+            }
+            willOpenVC = [[MyWaitingToDoViewController alloc]initWithNibName:@"MyWaitingToDoViewController" bundle:[NSBundle mainBundle]];
+            willOpenVC.VCType = VC_MyWaitToDo;
+        }
+            break;
+            
+            
+        case VC_MyOnTheWayList:{
+            if (tool.mainVC.topViewController.VCType == VC_MyOnTheWayList) {
+                break;
+            }
+            
+            willOpenVC = [[MyOnTheWayListViewController alloc]initWithNibName:@"MyOnTheWayListViewController" bundle:[NSBundle mainBundle]];
+            willOpenVC.VCType = VC_MyOnTheWayList;
+            willOpenVC.title = @"我的在途单";
+
+        }
+            break;
+        
+        case VC_ScanQRCode:{
+            isPush = YES;
+            if ([tool.mainVC.topViewController isKindOfClass:[ScanQRCodeViewController class]]) {
+                break;
+            }
+            if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]){
+                //your code
+                willOpenVC = [[ScanQRCodeViewController alloc]initWithNibName:@"ScanQRCodeViewController" bundle:[NSBundle mainBundle]];
+                willOpenVC.VCType = VC_ScanQRCode;
+            }else{
+                NSLog(@">_<没摄像头扫你妹的🐴！");
+                
+            }
+            break;
+        case VC_OrderRatepaying:{
+            if (tool.mainVC.topViewController.VCType == VC_OrderRatepaying) {
+                break;
+            }
+            willOpenVC = [[MyOnTheWayListViewController alloc]initWithNibName:@"MyOnTheWayListViewController" bundle:[NSBundle mainBundle]];
+            willOpenVC.VCType = VC_OrderRatepaying;
+            willOpenVC.title = @"预约缴税过户-列表";
+        }
+            break;
+        case VC_CheckRatePaying:{
+            if (tool.mainVC.topViewController.VCType == VC_CheckRatePaying) {
+                break;
+            }
+            willOpenVC = [[MyOnTheWayListViewController alloc]initWithNibName:@"MyOnTheWayListViewController" bundle:[NSBundle mainBundle]];
+            willOpenVC.VCType = VC_CheckRatePaying;
+            willOpenVC.title = @"登记完税结果-列表";
+        }
+            break;
+        
+        case VC_CheckTransfer:{
+            if (tool.mainVC.topViewController.VCType == VC_CheckTransfer) {
+                break;
+            }
+            willOpenVC = [[MyOnTheWayListViewController alloc]initWithNibName:@"MyOnTheWayListViewController" bundle:[NSBundle mainBundle]];
+            willOpenVC.VCType = VC_CheckTransfer;
+            willOpenVC.title = @"登记过户结果-列表";
+
+        }
+            break;
+        case VC_CheckTransferLand:{
+            if (tool.mainVC.topViewController.VCType == VC_CheckTransferLand) {
+                break;
+            }
+            willOpenVC = [[MyOnTheWayListViewController alloc]initWithNibName:@"MyOnTheWayListViewController" bundle:[NSBundle mainBundle]];
+            willOpenVC.VCType = VC_CheckTransferLand;
+            willOpenVC.title = @"登记土地过户结果-列表";
+
+        }
+            
+            break;
+
+       
+        default:
+            break;
+        }
+    }
+    if (!willOpenVC) {
+        return;
+    }
+    if (isPush) {
+        [tool.mainVC pushViewController:willOpenVC animated:YES];
+    }else{
+//        [tool.mainVC setViewControllers:[NSArray arrayWithObject:willOpenVC] animated:YES];
+        tool.mainVC.viewControllers = [NSArray arrayWithObject:willOpenVC];
+    }
+
+}
+
++(NSString *)getURLWithType:(URLTYPE)type{
+    NSString *urlStr = nil;
+    switch (type) {
+        case URLTYPE_login:{
+//            urlStr = [NSString stringWithFormat:@"%@te/teapp/public/login",[Tool getHostURL]];
+            urlStr = [NSString stringWithFormat:@"%@appLogin",[Tool getHostURL]];
+        }
+            break;
+        case URLTYPE_userInfo:{
+            urlStr = [NSString stringWithFormat:@"%@te/teapp/public/user",[Tool getHostURL]];
+
+        }
+            break;
+        case URLTYPE_opinion:{
+            urlStr = [NSString stringWithFormat:@"%@app/saveOpinion.action",[Tool getHostURL]];
+        }
+            break;
+        case URLTYPE_myWaitToDo:{
+//            urlStr = [NSString stringWithFormat:@"%@te/teapp/public/allList",[Tool getHostURL]];
+            urlStr = [NSString stringWithFormat:@"%@app/queryStages.action",[Tool getHostURL]];
+        }
+            break;
+        case URLTYPE_myOnThewayList:{
+            urlStr = [NSString stringWithFormat:@"%@te/teapp/public/todoList",[Tool getHostURL]];
+        }
+            break;
+        case URLTYPE_listDetail:{
+            urlStr = [NSString stringWithFormat:@"%@app/getDetailInfo.action",[Tool getHostURL]];
+        }
+            break;
+        case URLTYPE_OrderRatepaying:{
+            urlStr = [NSString stringWithFormat:@"%@app/queryBookTaxList.action",[Tool getHostURL]];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    NSLog(@"-----准备URL----->%@",urlStr);
+    return urlStr;
+}
+
+
++(NSString *)getHostURL{
+//    return @"http://172.16.29.98/";
+//    return @"http://172.16.29.89/";
+//    return @"http://172.16.29.250/";
+//    return @"http://172.16.29.119:8090/TEApp/";
+    return @"http://172.16.29.134:8090/TEApp/";
+}
+
+@end
+
+@implementation UITableViewCell(moban)
+
+-(void)uiConfig{
+    NSLog(@"模板方法~~~");
+}
+
+@end
