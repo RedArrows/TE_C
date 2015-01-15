@@ -1,0 +1,120 @@
+//
+//  ListDetailTableViewCell.m
+//  TE_Commissioner
+//
+//  Created by 时瑶 on 14/12/26.
+//  Copyright (c) 2014年 shiyao. All rights reserved.
+//
+
+#import "ListDetailTableViewCell.h"
+
+#define FontSection [UIFont systemFontOfSize:14]
+#define ColorSectionKey [UIColor darkGrayColor]
+#define ColorSectionValue [UIColor lightGrayColor]
+
+
+
+@implementation ListDetailTableViewCell{
+    CGFloat _totalHeight;
+
+}
+
+-(void)fillDataWithDic:(NSDictionary *)dic{
+    if (![dic objectForKey:@"content"]) {
+        return;
+    }
+    NSArray *contentArray = [dic objectForKey:@"content"];
+    for (id data in contentArray) {
+        if ([data isKindOfClass:[NSDictionary class]]) {
+            [self configWithDic:data];
+        }else if ([data isKindOfClass:[NSArray class]]){
+            [self configWithArray:data];
+        }
+    }
+    self.frame = CGRectMake(0, 0, 320, _totalHeight);
+}
+
+-(void)configWithDic:(NSDictionary *)dic{
+    if([dic[@"key"] isEqualToString:@"业务部门"]){
+        NSLog(@"停");
+    }
+    NSString *showText = [NSString stringWithFormat:@"%@：%@",dic[@"key"],dic[@"value"]];
+    CGFloat addHeight = [self getHeight:showText];
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10, _totalHeight, 300, addHeight)];
+    label.numberOfLines = 0;
+    [self.contentView addSubview:label];
+    _totalHeight += addHeight;
+    if (dic) {
+        label.attributedText = [self getAttrString:dic];
+    }
+}
+
+-(void)configWithArray:(NSArray *)arr{
+    if (arr.count==1) {
+        [self configWithDic:[arr objectAtIndex:0]];
+        return;
+    }
+    CGFloat labelHeight = 18.0;
+    CGFloat labelWidth = 300.0/arr.count;
+    int i = 0;
+    
+#pragma mark ----暂时先这样改，目的：去除json中的null-------
+    NSMutableArray *la = [[NSMutableArray alloc]init];
+    for (int i = 0; i<arr.count; i++) {
+        id obj = [arr objectAtIndex:i];
+        if ([obj isKindOfClass:[NSDictionary class]]) {
+            [la addObject:obj];
+        }
+    }
+    arr = [la copy];
+#pragma mark -----end--------
+    
+    for (NSDictionary *dic in arr) {
+        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10+labelWidth*i, _totalHeight, labelWidth, labelHeight)];
+        label.attributedText = [self getAttrString:dic];
+        [self.contentView addSubview:label];
+        i++;
+    }
+    _totalHeight += labelHeight;
+    
+    
+}
+
+-(NSAttributedString *)getAttrString:(NSDictionary *)dic{
+    
+    NSString *keyStr = [NSString stringWithFormat:@"%@：",dic[@"key"]];
+    NSString *valueStr = dic[@"value"];
+    NSString *showText = nil;
+    if (dic[@"value"]){
+        showText = [NSString stringWithFormat:@"%@%@",keyStr,dic[@"value"]];
+    }else{
+        showText = keyStr;
+
+    }
+    
+    NSMutableAttributedString *aString = [[NSMutableAttributedString alloc]initWithString:showText];
+    [aString addAttribute:NSForegroundColorAttributeName value:ColorSectionKey range:NSMakeRange(0,keyStr.length)];
+    [aString addAttribute:NSForegroundColorAttributeName value:ColorSectionValue range:NSMakeRange(keyStr.length,valueStr.length)];
+    [aString addAttribute:NSFontAttributeName value:FontSection range:NSMakeRange(0, showText.length)];
+    return aString;
+}
+
+-(CGFloat)getHeight:(NSString *)str{
+    CGRect matchRect = [str boundingRectWithSize:CGSizeMake(300, 100) options:NSStringDrawingUsesFontLeading attributes:[NSDictionary dictionaryWithObjectsAndKeys:FontSection,NSFontAttributeName, nil] context:nil];
+    return matchRect.size.height+6;
+}
+
+
+
+
+- (void)awakeFromNib {
+    // Initialization code
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
+
+@end
