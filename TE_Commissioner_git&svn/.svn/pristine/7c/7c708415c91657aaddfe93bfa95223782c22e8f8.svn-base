@@ -1,0 +1,184 @@
+//
+//  OrderRatepayingResultViewController.m
+//  TE_Commissioner
+//
+//  Created by 时瑶 on 14/12/29.
+//  Copyright (c) 2014年 shiyao. All rights reserved.
+//
+
+#import "OrderRatepayingResultViewController.h"
+#import "ResultMidMenu.h"
+#import "ResultBottomMenu.h"
+#import "DatePickerView.h"
+
+@interface OrderRatepayingResultViewController ()
+
+@end
+
+@implementation OrderRatepayingResultViewController{
+    
+    __weak IBOutlet UILabel *explainLabel;
+    __weak IBOutlet UITextView *textView1;
+    __weak IBOutlet UILabel *dateShowLabel;
+    
+    __weak IBOutlet UIView *dateShowView;
+    __weak IBOutlet UIView *contentShowView;
+
+    AFHTTPRequestOperationManager *_manager;
+    DatePickerView *_datePickerView;
+    __weak OrderRatepayingResultViewController *_weakSelf;
+    NSString *_infoText;
+    
+    NSInteger _param_type;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    _weakSelf = self;
+    _manager = [AFHTTPRequestOperationManager manager];
+    [self uiConfig];
+    self.title = @"预约完税过户";
+    [Tool setLeftBackBarBtn:self];
+    
+    [self requestGetInfo];
+    // Do any additional setup after loading the view from its nib.
+}
+
+-(void)uiConfig{
+    
+    __weak typeof(self) weakSelf = self;
+    ResultMidMenu *rmm = [[ResultMidMenu alloc]initWithFrame:CGRectMake(0, 0, 0, 0) titleArray:@[@"记录预约结果",@"不做预约直接办理"]];
+    [self.view addSubview:rmm];
+    rmm.callback = ^(NSInteger index){
+        [weakSelf recordTypeDidSelect:index];
+    };
+    [rmm setSelected:0];
+    
+    ResultBottomMenu *rbm = [[ResultBottomMenu alloc]init];
+    [self.view addSubview:rbm];
+    rbm.submitCallback = ^(void){
+        [_weakSelf submitOrSaveActionIsSubmit:YES];
+    };
+    rbm.saveCallback = ^(void){
+        [_weakSelf submitOrSaveActionIsSubmit:NO];
+    };
+    
+    textView1.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    textView1.layer.borderWidth = 1;
+    
+    UITapGestureRecognizer *dateTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showDatePicker)];
+    [dateShowLabel addGestureRecognizer:dateTap];
+    
+    
+    __weak typeof(dateShowLabel) weakLabel = dateShowLabel;
+    _datePickerView = [[DatePickerView alloc]init];
+    _datePickerView.callback = ^(NSDate *date,NSString *str){
+        weakLabel.text = str;
+    };
+    
+    UITapGestureRecognizer *closeKBTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(closekeyBoard)];
+    [self.view addGestureRecognizer:closeKBTap];
+}
+
+-(void)requestGetInfo{
+    NSDictionary *params = [NSDictionary dictionaryWithObject:_documentNO forKey:@"documentNo"];
+    [_manager GET:[Tool getURLWithType:URLTYPE_OrderRatepaying_get] parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        ResponseModel *model = [[ResponseModel alloc]initWithJson:responseObject type:URLTYPE_listDetail];
+        if (model.isSuccessed) {
+            NSDictionary *dic = (NSDictionary *)responseObject;
+            textView1.text = [dic objectForKey:@"comment"];
+            if ([dic objectForKey:@"date"]) {
+                dateShowLabel.text = [dic objectForKey:@"date"];
+            }
+            NSLog(@"------>%@",dic);
+
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+}
+-(void)requestSubmitInfoIsSubmit:(BOOL)isSubmit{
+    NSMutableArray *params = [NSMutableArray array];
+    [params setValue:[NSNumber numberWithInteger:_param_type] forKey:@"type"];
+    [params setValue:dateShowLabel.text forKey:@"date"];
+    [params setValue:textView1.text forKey:@"comment"];
+    if (isSubmit) {
+        [params setValue:@"submit" forKey:@"saveType"];
+    }else{
+        [params setValue:@"save" forKey:@"saveType"];
+    }
+    
+    [params setValue:_documentNO forKey:@"documentNo"];
+
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [_manager GET:[Tool getURLWithType:URLTYPE_OrderRatepaying_submit] parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        ResponseModel *model = [[ResponseModel alloc]initWithJson:responseObject type:URLTYPE_listDetail];
+        NSDictionary *dic = (NSDictionary *)responseObject;
+        NSLog(@"------>%@",dic);
+        if (model.isSuccessed) {
+            
+           
+
+        }
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [Tool showWarning:self.view text:@"成功"];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [Tool showWarning:self.view text:@"失败"];
+    }];
+}
+
+
+-(void)submitOrSaveActionIsSubmit:(BOOL)isSubmit{
+    NSString *text;
+    if (isSubmit) {
+        text = @"是否确认提交登记预约缴税过户结果？";
+    }else{
+        text = @"是否确认保存登记预约缴税过户结果？";
+    }
+    DXAlertView *alert = [[DXAlertView alloc] initWithTitle:nil contentText:text leftButtonTitle:@"确认" rightButtonTitle:@"取消"];
+    [alert show];
+    alert.leftBlock = ^() {
+        [_weakSelf requestSubmitInfoIsSubmit:isSubmit];
+    };
+}
+
+-(void)showDatePicker{
+    [_datePickerView show];
+}
+-(void)recordTypeDidSelect:(NSInteger)index{
+    if (index == 0) {
+        _param_type = 1;
+        dateShowView.hidden = NO;
+        contentShowView.frame = CGRectMake(0, 40, contentShowView.frame.size.width, contentShowView.frame.size.height);
+        explainLabel.text = @"说明";
+        textView1.text = @"";
+    }else{
+        _param_type = 0;
+        dateShowView.hidden = YES;
+        contentShowView.frame = CGRectMake(0, 0, contentShowView.frame.size.width, contentShowView.frame.size.height);
+        explainLabel.text = @"不预约原因说明";
+        textView1.text = @"";
+    }
+}
+
+-(void)closekeyBoard{
+    [textView1 resignFirstResponder];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

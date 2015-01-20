@@ -26,6 +26,8 @@ fprintf(stderr, "-------\n");                                               \
 #define NSLogSize(size) NSLog(@"%s w:%.4f, h:%.4f", #size, size.width, size.height)
 #define NSLogPoint(point) NSLog(@"%s x:%.4f, y:%.4f", #point, point.x, point.y)
 
+#define UMFeedBackAppKey @"54be0c8bfd98c51c400004b8"
+
 #define UICOLOR_RGB_Alpha(_color,_alpha) [UIColor colorWithRed:((_color>>16)&0xff)/255.0f green:((_color>>8)&0xff)/255.0f blue:(_color&0xff)/255.0f alpha:_alpha]
 
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height

@@ -29,10 +29,19 @@ typedef NS_ENUM(NSInteger,URLTYPE){
     URLTYPE_userInfo,
     URLTYPE_opinion,
     URLTYPE_myWaitToDo,
-    URLTYPE_myOnThewayList,
+    URLTYPE_allList,
     URLTYPE_listDetail,
-    URLTYPE_OrderRatepaying
+    URLTYPE_OrderRatepaying,
+    URLTYPE_OrderRatepaying_get,
+    URLTYPE_OrderRatepaying_submit,
+    URLTYPE_CheckRatepaying_get,
+    URLTYPE_CheckRatepaying_submit,
+    URLTYPE_CheckTransfer_get,
+    URLTYPE_CheckTransfer_submit,
+    URLTYPE_CheckTransferLand_get,
+    URLTYPE_CheckTransferLand_Submit
 };
+
 
 //#define NOINTERNETMODEL //无网络通行模式
 
@@ -53,6 +62,8 @@ typedef NS_ENUM(NSInteger,URLTYPE){
 
 @property (nonatomic,strong) TEMenuViewController *menuVC;
 
+@property (nonatomic,strong,readonly) NSDictionary *productTypeDic;
+
 
 +(instancetype)instance;
 
@@ -68,7 +79,7 @@ typedef NS_ENUM(NSInteger,URLTYPE){
 
 +(NSString *)getURLWithType:(URLTYPE)type;
 
-
++(void)showWarning:(UIView *)view text:(NSString *)text;
 
 @end
 

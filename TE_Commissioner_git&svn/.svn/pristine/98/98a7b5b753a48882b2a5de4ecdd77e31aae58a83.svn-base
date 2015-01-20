@@ -1,0 +1,291 @@
+//
+//  MyWaitingToDoViewController.m
+//  TE_Commissioner
+//
+//  Created by 时瑶 on 14/12/8.
+//  Copyright (c) 2014年 shiyao. All rights reserved.
+//
+
+#import "MyWaitingToDoViewController.h"
+#import "PAAImageView.h"
+#import "SetInfoViewController.h"
+#import "ScanQRCodeViewController.h"
+#import "MyOnTheWayListViewController.h"
+#import "MyWaitToDoModel.h"
+#import "UserModel.h"
+
+@interface MyWaitingToDoViewController ()
+
+@end
+
+@implementation MyWaitingToDoViewController{
+    
+    __weak IBOutlet UIView *headView;
+    __weak IBOutlet UILabel *nameLabel;
+    __weak IBOutlet UILabel *jobLabel;
+    __weak IBOutlet UILabel *phoneLabel;
+    PAAImageView * _photoImage;
+    __weak IBOutlet UIButton *orderRatepaying;//预约缴税过户
+    __weak IBOutlet UIButton *checkRatePaying;//登记完税结果
+    
+    __weak IBOutlet UIButton *checkTransfer;//登记过户结果
+    __weak IBOutlet UIButton *CheckTransferLand;//登记土地过户结果
+    
+    
+    __weak IBOutlet UIView *bottomShowView;
+    
+    __weak IBOutlet UIScrollView *mainMenuScrollView;
+    AFHTTPRequestOperationManager *manager;
+    
+    UIColor *_disableColor;
+    UIColor *_enableColor;
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [manager.operationQueue cancelAllOperations];
+}
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    manager = [AFHTTPRequestOperationManager manager];
+    _disableColor = UICOLOR_RGB_Alpha(0xdcdcdc,1);
+    _enableColor = UICOLOR_RGB_Alpha(0x39ac6a,1);
+
+    
+    [self uiConfig];
+    [self requestList];
+    
+    
+    // Do any additional setup after loading the view from its nib.
+}
+
+-(void)uiConfig{
+    self.navigationController.navigationBar.barTintColor = UICOLOR_RGB_Alpha(0x404040, 1);
+    self.title = @"我的待办";
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName]];
+    
+    _photoImage = [[PAAImageView alloc]initWithFrame:CGRectMake(15, 10, 60, 60)
+                             backgroundProgressColor:UICOLOR_RGB_Alpha(0x7ec99e, 1) progressColor:[UIColor whiteColor]];
+    [headView addSubview:_photoImage];
+    [_photoImage setImage:[UIImage imageNamed:@"emptyHeadImage"]];
+    
+    [Tool setLeftMenuBarBtn:self];
+    
+    nameLabel.text = [Tool instance].curUser.name;
+    phoneLabel.text = [Tool instance].curUser.phone;
+    [_photoImage setImageURL:[NSURL URLWithString:[Tool instance].curUser.imageUrl]];
+    jobLabel.text = [Tool instance].curUser.position;
+    
+    
+    bottomShowView.frame = CGRectMake(0, ScreenHeight-bottomShowView.frame.size.height, 320, bottomShowView.frame.size.height);
+    mainMenuScrollView.frame = CGRectMake(0, 144, 320, ScreenHeight-144-bottomShowView.frame.size.height);
+    mainMenuScrollView.contentSize =  CGSizeMake(320, 336);
+
+    
+    nameLabel.text = [Tool instance].curUser.name;
+    phoneLabel.text = [Tool instance].curUser.phone;
+    [_photoImage setImageURL:[NSURL URLWithString:[Tool instance].curUser.imageUrl]];
+    jobLabel.text = [Tool instance].curUser.position;
+    
+    [orderRatepaying setTitleColor:UICOLOR_RGB_Alpha(0xc3a963, 1) forState:UIControlStateNormal];
+    [orderRatepaying setTitleColor:_disableColor forState:UIControlStateDisabled];
+    [orderRatepaying setTitleColor:_disableColor forState:UIControlStateSelected];
+    [orderRatepaying setBackgroundImage:[UIImage imageNamed:@"circle_yellow"] forState:UIControlStateNormal];
+    [orderRatepaying setBackgroundImage:[UIImage imageNamed:@"circle_gray"] forState:UIControlStateDisabled];
+    [orderRatepaying setBackgroundImage:[UIImage imageNamed:@"circle_gray"] forState:UIControlStateSelected];
+
+    
+    [checkRatePaying setTitleColor:_enableColor forState:UIControlStateNormal];
+    [checkRatePaying setTitleColor:_disableColor forState:UIControlStateDisabled];
+    [checkRatePaying setTitleColor:_disableColor forState:UIControlStateSelected];
+    [checkRatePaying setBackgroundImage:[UIImage imageNamed:@"circle_green"] forState:UIControlStateNormal];
+    [checkRatePaying setBackgroundImage:[UIImage imageNamed:@"circle_gray"] forState:UIControlStateDisabled];
+    [checkRatePaying setBackgroundImage:[UIImage imageNamed:@"circle_gray"] forState:UIControlStateSelected];
+
+    
+    [checkTransfer setTitleColor:_enableColor forState:UIControlStateNormal];
+    [checkTransfer setTitleColor:_disableColor forState:UIControlStateDisabled];
+    [checkTransfer setTitleColor:_disableColor forState:UIControlStateSelected];
+    [checkTransfer setBackgroundImage:[UIImage imageNamed:@"circle_green"] forState:UIControlStateNormal];
+    [checkTransfer setBackgroundImage:[UIImage imageNamed:@"circle_gray"] forState:UIControlStateDisabled];
+    [checkTransfer setBackgroundImage:[UIImage imageNamed:@"circle_gray"] forState:UIControlStateSelected];
+
+    
+    [CheckTransferLand setTitleColor:_enableColor forState:UIControlStateNormal];
+    [CheckTransferLand setTitleColor:_disableColor forState:UIControlStateDisabled];
+    [CheckTransferLand setTitleColor:_disableColor forState:UIControlStateSelected];
+    [CheckTransferLand setBackgroundImage:[UIImage imageNamed:@"circle_green"] forState:UIControlStateNormal];
+    [CheckTransferLand setBackgroundImage:[UIImage imageNamed:@"circle_gray"] forState:UIControlStateDisabled];
+    [CheckTransferLand setBackgroundImage:[UIImage imageNamed:@"circle_gray"] forState:UIControlStateSelected];
+
+
+    
+}
+
+-(void)requestList{
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
+    [manager POST:[Tool getURLWithType:URLTYPE_myWaitToDo] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        ResponseModel *model = [[ResponseModel alloc]initWithJson:responseObject type:URLTYPE_myWaitToDo];
+        if (model.isSuccessed&&model.data) {
+            
+            
+            MyWaitToDoModel *m = [model.data objectAtIndex:0];
+            
+            [orderRatepaying setTitle:[NSString stringWithFormat:@"%li",(long)m.orderRatepayingNum] forState:UIControlStateNormal];
+            
+            [checkRatePaying setTitle:[NSString stringWithFormat:@"%li",(long)m.checkRatepayingNum] forState:UIControlStateNormal];
+            
+            [checkTransfer setTitle:[NSString stringWithFormat:@"%li",(long)m.checkTransferNum] forState:UIControlStateNormal];
+            
+            [CheckTransferLand setTitle:[NSString stringWithFormat:@"%li",(long)m.checkTransferLandNum] forState:UIControlStateNormal];
+
+            if(m.orderRatepayingNum){
+                orderRatepaying.selected = YES;
+            }else{
+                orderRatepaying.selected = NO;
+
+            }
+            if (m.checkRatepayingNum) {
+                checkRatePaying.selected = YES;
+            }else{
+                checkRatePaying.selected = NO;
+            }
+            if (m.checkTransferNum) {
+                checkRatePaying.selected = YES;
+            }else{
+                checkRatePaying.selected = NO;
+            }
+            if (m.checkTransferLandNum) {
+                CheckTransferLand.selected = YES;
+            }else{
+                CheckTransferLand.selected = NO;
+            }
+
+//            if(m.orderRatepayingNum){
+//                orderRatepaying.enabled = YES;
+//            }else{
+//                orderRatepaying.enabled = NO;
+//            }
+//            if (m.checkRatepayingNum) {
+//                checkRatePaying.enabled = YES;
+//            }else{
+//                checkRatePaying.enabled = NO;
+//            }
+//            if (m.checkTransferNum) {
+//                checkRatePaying.enabled = YES;
+//            }else{
+//                checkRatePaying.enabled = NO;
+//            }
+//            if (m.checkTransferLandNum) {
+//                CheckTransferLand.enabled = YES;
+//            }else{
+//                CheckTransferLand.enabled = NO;
+//            }
+
+        }
+        NSLog(@"成功");
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"失败");
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+    
+    
+//    [manager POST:[Tool getURLWithType:URLTYPE_userInfo] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        ResponseModel *model = [[ResponseModel alloc]initWithJson:responseObject type:URLTYPE_userInfo];
+//        if (model.isSuccessed&&model.data) {
+//            UserModel *m = [model.data objectAtIndex:0];
+//            nameLabel.text = m.name;
+//            phoneLabel.text = m.phone;
+//            [_photoImage setImageURL:[NSURL URLWithString:m.imageUrl]];
+//            jobLabel.text = m.position;
+//            
+//            [Tool instance].curUser.name = m.name;
+//            [Tool instance].curUser.position = m.position;
+//            [Tool instance].curUser.imageUrl = m.imageUrl;
+//            [[Tool instance].curUser saveUser];
+//
+//        }
+//        NSLog(@"成功");
+//        
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        NSLog(@"失败");
+//    }];
+}
+
+-(void)openSliderMenu{
+    NSLog(@"open slider Menu");
+}
+
+
+/*预约缴税过户 2001
+ *登记完税结果 2002
+ *登记过户结果 2003
+ *登记土地过户 2004
+ */
+- (IBAction)clickBtn:(id)sender {
+    UIButton *btn = (UIButton *)sender;
+    NSLog(@"---执行-->%li",(long)btn.tag);
+    switch (btn.tag) {
+        case 2001:
+        {
+            [Tool openVCWithType:VC_OrderRatepaying];
+        }
+            break;
+        case 2002:
+        {
+            [Tool openVCWithType:VC_CheckRatePaying];
+        }
+            break;
+        case 2003:
+        {
+            [Tool openVCWithType:VC_CheckTransfer];
+        }
+            break;
+        case 2004:
+        {
+            [Tool openVCWithType:VC_CheckTransferLand];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    
+}
+- (IBAction)setClick:(id)sender {
+    SetInfoViewController *setVC = [[SetInfoViewController alloc]initWithNibName:@"SetInfoViewController" bundle:[NSBundle mainBundle]];
+    [self.navigationController pushViewController:setVC animated:YES];
+}
+
+- (IBAction)scanQRCode:(id)sender {
+    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]){
+        //your code
+        [Tool openVCWithType:VC_ScanQRCode];
+        
+    }else{
+        NSLog(@">_<没摄像头扫你妹的🐴！");
+        
+    }
+    
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

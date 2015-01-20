@@ -1,0 +1,108 @@
+//
+//  ResultForQRCodeViewController.m
+//  TE_Commissioner
+//
+//  Created by 时瑶 on 14/12/10.
+//  Copyright (c) 2014年 shiyao. All rights reserved.
+//
+
+#import "ResultForQRCodeViewController.h"
+
+#import "ListItemTableViewCell.h"
+
+@interface ResultForQRCodeViewController ()
+
+@end
+
+@implementation ResultForQRCodeViewController{
+    
+    __weak IBOutlet UILabel *DocumentNOLabel;
+    __weak IBOutlet UIView *mainShowView;
+    
+    NSArray *_dataArray;
+    
+    UITableView *_tableView;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.title = @"扫描结果";
+    
+    [Tool setLeftMenuBarBtn:self];
+    [self uiConfig];
+    
+    // Do any additional setup after loading the view from its nib.
+}
+
+-(void)uiConfig{
+    DocumentNOLabel.text = [NSString stringWithFormat:@"单号：%@",_documentNO];
+    
+    UIButton *reScan = [UIButton buttonWithType:UIButtonTypeSystem];
+    [reScan setFrame:CGRectMake(0, 0, 40, 20)];
+    [reScan setTitle:@"重新扫描" forState:UIControlStateNormal];
+    [reScan addTarget:self action:@selector(popNav) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:reScan];
+    
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 105, 320, ScreenHeight-66-40) style:UITableViewStylePlain];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    [self.view addSubview:_tableView];
+}
+
+-(void)popNav{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark -----tableView about -----
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = nil;
+    NSString *listCellID = @"listCell";
+    NSString *noListCellID = @"noList";
+    
+    if (tableView == _tableView&&_dataArray.count == 0){
+        cell = [tableView dequeueReusableCellWithIdentifier:noListCellID];
+        if (!cell) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:noListCellID];
+            NSLogRect(cell.textLabel.frame);
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.textLabel.text = @"没有找到符合条件的业务单！";
+            cell.textLabel.textAlignment = NSTextAlignmentCenter;
+            cell.textLabel.textColor = [UIColor darkGrayColor];
+        }
+        
+    }else if (tableView == _tableView){
+        cell = [tableView dequeueReusableCellWithIdentifier:listCellID];
+        if (!cell) {
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"ListItemTableViewCell" owner:self options:nil] lastObject];
+            [cell uiConfig];
+        }
+        ListItemTableViewCell *listCell = (ListItemTableViewCell*)cell;
+        [listCell fillDataWithModel:[_dataArray objectAtIndex:indexPath.row] isShowToDo:YES];
+    }
+    
+    
+    return cell;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

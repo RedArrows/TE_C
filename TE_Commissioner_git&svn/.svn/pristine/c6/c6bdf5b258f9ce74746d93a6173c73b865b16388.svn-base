@@ -1,0 +1,217 @@
+//
+//  CheckTransferViewController.m
+//  TE_Commissioner
+//
+//  Created by 时瑶 on 15/1/5.
+//  Copyright (c) 2015年 shiyao. All rights reserved.
+//
+
+#import "CheckTransferViewController.h"
+#import "ResultMidMenu.h"
+#import "DatePickerView.h"
+#import "ResultBottomMenu.h"
+
+@interface CheckTransferViewController ()
+
+@end
+
+@implementation CheckTransferViewController{
+    
+    __weak IBOutlet UILabel *noLandCer;
+    __weak IBOutlet UIImageView *noCerIcon;
+    
+//    __weak IBOutlet UILabel *hadLandCer;
+    
+    __weak IBOutlet UILabel *hadLandCer;
+    __weak IBOutlet UIImageView *haveCerIcon;
+    
+    
+    __weak IBOutlet UIImageView *checkBoxImage;
+    __weak IBOutlet UITextView *textView;
+    __weak IBOutlet UILabel *dateShowLabel;
+    
+    __weak IBOutlet UIView *landCerSelectView;
+    __weak IBOutlet UIView *textShowView;
+    __weak IBOutlet UIView *dateShowView;
+    
+    DatePickerView *_datePickerView;
+    
+    BOOL _isShowSelectLandCer;
+    BOOL _isHasLandCer;
+    
+    UIColor *_selectedColor;
+    UIColor *_normalColor;
+    
+    __weak CheckTransferViewController *_weakSelf;
+
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    _isShowSelectLandCer = NO;
+    _isHasLandCer = NO;
+    [self uiConfig];
+
+    // Do any additional setup after loading the view from its nib.
+}
+
+-(void)uiConfig{
+    
+    self.title = @"登记过户结果";
+    
+    _weakSelf = self;
+    [Tool setLeftBackBarBtn:self];
+    
+    __weak typeof(self) weakSelf = self;
+    ResultMidMenu *rmm = [[ResultMidMenu alloc]initWithFrame:CGRectMake(0, 0, 0, 0) titleArray:@[@"办理成功",@"再次办理",@"客户自行办理"]];
+    [self.view addSubview:rmm];
+    rmm.callback = ^(NSInteger index){
+        [weakSelf recordTypeDidSelect:index];
+    };
+    [rmm setSelected:0];
+    
+    ResultBottomMenu *rbm = [[ResultBottomMenu alloc]init];
+    [self.view addSubview:rbm];
+    rbm.submitCallback = ^(void){
+        [_weakSelf submitOrSaveActionIsSubmit:YES];
+    };
+    rbm.saveCallback = ^(void){
+        [_weakSelf submitOrSaveActionIsSubmit:NO];
+    };
+    
+    textView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    textView.layer.borderWidth = 1;
+    
+    _selectedColor = UICOLOR_RGB_Alpha(0x39ac6a, 1);
+    _normalColor = UICOLOR_RGB_Alpha(0x969696, 1);
+    
+    noLandCer.tag = 1001;
+    noLandCer.layer.borderColor = _normalColor.CGColor;
+    noLandCer.layer.borderWidth = 2.0;
+    noLandCer.layer.cornerRadius = 5;
+    noLandCer.textColor = _normalColor;
+    noLandCer.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(setLandCerSelectedWithGes:)];
+    [noLandCer addGestureRecognizer:tap1];
+    
+    hadLandCer.tag = 1002;
+    hadLandCer.layer.borderColor = _normalColor.CGColor;
+    hadLandCer.layer.borderWidth = 2.0;
+    hadLandCer.layer.cornerRadius = 5;
+    hadLandCer.textColor = _normalColor;
+    UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(setLandCerSelectedWithGes:)];
+    [hadLandCer addGestureRecognizer:tap2];
+    
+    [self setLandCerSelected:noLandCer];
+    
+    UITapGestureRecognizer *dateTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showDatePicker)];
+    dateShowLabel.userInteractionEnabled = YES;
+    [dateShowLabel addGestureRecognizer:dateTap];
+    
+    
+    __weak typeof(dateShowLabel) weakLabel = dateShowLabel;
+    _datePickerView = [[DatePickerView alloc]init];
+    _datePickerView.callback = ^(NSDate *date,NSString *str){
+        weakLabel.text = str;
+    };
+    
+    NSLog(@"---->%@",noLandCer.subviews);
+    
+}
+
+-(void)submitOrSaveActionIsSubmit:(BOOL)isSubmit{
+    NSString *text;
+    if (isSubmit) {
+        text = @"是否确认提交登记过户结果？";
+    }else{
+        text = @"是否确认保存登记过户结果？";
+    }
+    DXAlertView *alert = [[DXAlertView alloc] initWithTitle:nil contentText:text leftButtonTitle:@"确认" rightButtonTitle:@"取消"];
+    [alert show];
+    alert.leftBlock = ^() {
+        NSLog(@"left button clicked");
+    };
+}
+
+-(void)showDatePicker{
+    [_datePickerView show];
+}
+-(void)setLandCerSelectedWithGes:(UITapGestureRecognizer *)tap{
+    [self setLandCerSelected:(UILabel *)(tap.view)];
+}
+
+-(void)setLandCerSelected:(UILabel *)label{
+    
+    label.layer.borderColor = _selectedColor.CGColor;
+    label.textColor = _selectedColor;
+    
+    if (label.tag == 1001) {//选择无土地证
+        _isHasLandCer = NO;
+        hadLandCer.layer.borderColor = _normalColor.CGColor;
+        hadLandCer.textColor = _normalColor;
+        haveCerIcon.hidden = YES;
+        noCerIcon.hidden = NO;
+    }else{
+        _isHasLandCer = YES;
+        noLandCer.layer.borderColor = _normalColor.CGColor;
+        noLandCer.textColor = _normalColor;
+        noCerIcon.hidden = YES;
+        haveCerIcon.hidden = NO;
+    }
+}
+
+
+-(void)recordTypeDidSelect:(NSInteger)index{
+    if (index == 0) {
+        dateShowView.hidden = NO;
+        
+    }else if(index == 1){
+        dateShowView.hidden = NO;
+       
+//        dateShowView.frame = CGRectMake(0, 171, dateShowView.frame.size.width, dateShowView.frame.size.height);
+    }else{
+        dateShowView.hidden = YES;
+        
+    }
+}
+
+
+- (IBAction)todoTransferLandClick:(id)sender {
+    _isShowSelectLandCer = (_isShowSelectLandCer)?NO:YES;
+    
+    if (_isShowSelectLandCer) {
+        checkBoxImage.image = [UIImage imageNamed:@"checkBox_selected"];
+        [UIView animateWithDuration:0.3 animations:^{
+            textShowView.frame = CGRectMake(textShowView.frame.origin.x, textShowView.frame.origin.y+landCerSelectView.frame.size.height, textShowView.frame.size.width, textShowView.frame.size.height);
+            dateShowView.frame = CGRectMake(dateShowView.frame.origin.x, dateShowView.frame.origin.y+landCerSelectView.frame.size.height, dateShowView.frame.size.width, dateShowView.frame.size.height);
+        } completion:^(BOOL finished) {
+            [self.view bringSubviewToFront:landCerSelectView];
+        }];
+    }else{
+        [self.view sendSubviewToBack:landCerSelectView];
+        checkBoxImage.image = [UIImage imageNamed:@"checkBox_empty"];
+        [UIView animateWithDuration:0.3 animations:^{
+            textShowView.frame = CGRectMake(textShowView.frame.origin.x, textShowView.frame.origin.y-landCerSelectView.frame.size.height, textShowView.frame.size.width, textShowView.frame.size.height);
+            dateShowView.frame = CGRectMake(dateShowView.frame.origin.x, dateShowView.frame.origin.y-landCerSelectView.frame.size.height, dateShowView.frame.size.width, dateShowView.frame.size.height);
+        } completion:^(BOOL finished) {
+            
+        }];
+    }
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

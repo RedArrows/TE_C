@@ -1,0 +1,97 @@
+//
+//  ResponseModel.m
+//  TE_Commissioner
+//
+//  Created by 时瑶 on 14/12/23.
+//  Copyright (c) 2014年 shiyao. All rights reserved.
+//
+
+#import "ResponseModel.h"
+#import "ListModel.h"
+#import "ListDetailModel.h"
+#import "MyWaitToDoModel.h"
+#import "UserModel.h"
+
+@implementation ResponseModel
+
+-(id)initWithJson:(id)json type:(URLTYPE)type;
+{
+    self = [super init];
+    if (self) {
+        NSDictionary *mainDic = nil;
+        if ([json isKindOfClass:[NSDictionary class]]) {
+            mainDic = json;
+        }else{
+            mainDic = [NSJSONSerialization JSONObjectWithData:[json dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
+        }
+        
+        self.state = [[mainDic objectForKey:@"state"] integerValue];
+        if (self.state == 1) {
+            self.isSuccessed = YES;
+        }
+        self.message = [mainDic objectForKey:@"message"];
+        self.numFound = [mainDic[@"numFound"] integerValue];
+        
+        
+        switch (type) {
+            case URLTYPE_login:
+            {
+                NSDictionary *userDic = [mainDic objectForKey:@"user"];
+                NSMutableArray *dataArray = [[NSMutableArray alloc]init];
+                if (userDic) {
+                    [dataArray addObject:[[UserModel alloc]initWithDic:userDic]];
+                }
+                self.data = [dataArray copy];
+            }
+                break;
+            case URLTYPE_myOnThewayList:
+            {
+                NSArray *array = [mainDic objectForKey:@"list"];
+                NSMutableArray *dataArray = [[NSMutableArray alloc]init];
+                for (NSDictionary *dic in array) {
+                    ListModel *model = [[ListModel alloc]initWithDic:dic];
+                    [dataArray addObject:model];
+                }
+                self.data = dataArray;
+            }
+                break;
+            case URLTYPE_listDetail:{
+                id obj = [mainDic objectForKey:@"todo"];
+                if ([ obj isKindOfClass:[NSDictionary class]]) {
+                    
+                    _todoArray = [NSArray arrayWithObject:[(NSDictionary *)obj objectForKey:@"STATE_NAME"]];
+                }else if([obj isKindOfClass:[NSArray class]]){
+                    NSMutableArray *mTodoArray = [[NSMutableArray alloc]init];
+                    for (NSDictionary *lsDic in obj) {
+                        if ([lsDic objectForKey:@"STATE_NAME"]) {
+                            [mTodoArray addObject:[lsDic objectForKey:@"STATE_NAME"]];
+                        }
+                    }
+                    
+                    _todoArray = [mTodoArray copy];
+                }
+                NSArray *array = [mainDic objectForKey:@"tab"];
+                NSMutableArray *dataArray = [[NSMutableArray alloc]init];
+                for (NSDictionary *dic in array) {
+                    ListDetailModel *model = [[ListDetailModel alloc]initWithDic:dic];
+                    [dataArray addObject:model];
+                }
+                self.data = [dataArray copy];
+            }
+                break;
+            case URLTYPE_myWaitToDo:{
+                self.data = [NSArray arrayWithObject:[[MyWaitToDoModel alloc]initWithDic:mainDic]];
+            }
+                break;
+            case URLTYPE_userInfo:{
+                self.data = [NSArray arrayWithObject:[[UserModel alloc]initWithDic:mainDic]];
+            }
+                break;
+            default:
+                break;
+        }
+    }
+    return self;
+}
+
+@end
