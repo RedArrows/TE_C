@@ -25,28 +25,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TE_Commissioner/tool/Tool.m"
-            timestampString = "443353466.121605"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
-            landmarkName = "+hidenMenu:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "TE_Commissioner/AppDelegate.m"
-            timestampString = "442118314.501662"
+            timestampString = "443437335.197853"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
             landmarkName = "-application:didFinishLaunchingWithOptions:"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TE_Commissioner/VC/MyWaitingToDoViewController.m"
-            timestampString = "443084864.360313"
+            timestampString = "443609994.413509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
             landmarkName = "-openSliderMenu"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TE_Commissioner/AppDelegate.m"
-            timestampString = "442118314.501662"
+            timestampString = "443437335.197853"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
             landmarkName = "-application:didFinishLaunchingWithOptions:"
             landmarkType = "5">
          </BreakpointContent>
@@ -170,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TE_Commissioner/VC/MyOnTheWayListViewController.m"
-            timestampString = "443413421.605149"
+            timestampString = "443610165.449752"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
             landmarkName = "-resetFrameWithdelete:"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TE_Commissioner/View/DateOrderSelect/DateOrderSelect.m"
-            timestampString = "441181436.663114"
+            timestampString = "443515558.727348"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "-resetCloseMenuState:"
             landmarkType = "5">
          </BreakpointContent>
@@ -436,11 +420,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TE_Commissioner/VC/LoginViewController.m"
-            timestampString = "442940757.294465"
+            timestampString = "443597993.424865"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "@implementation LoginViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -452,11 +436,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TE_Commissioner/VC/LoginViewController.m"
-            timestampString = "443090399.150103"
+            timestampString = "443609994.413509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
             landmarkName = "-rememberUserChangeShow:"
             landmarkType = "5">
          </BreakpointContent>
@@ -468,11 +452,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TE_Commissioner/VC/LoginViewController.m"
-            timestampString = "443090399.150103"
+            timestampString = "443609994.413509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "234"
-            endingLineNumber = "234"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
             landmarkName = "-rememberUsername:"
             landmarkType = "5">
          </BreakpointContent>
@@ -484,11 +468,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TE_Commissioner/VC/LoginViewController.m"
-            timestampString = "443090399.150103"
+            timestampString = "443609994.413509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
             landmarkName = "-rememberUsername:"
             landmarkType = "5">
          </BreakpointContent>
@@ -516,11 +500,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TE_Commissioner/VC/MyOnTheWayListViewController.m"
-            timestampString = "443413421.605149"
+            timestampString = "443610165.449752"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "262"
-            endingLineNumber = "262"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
             landmarkName = "-resetFrameWithdelete:"
             landmarkType = "5">
          </BreakpointContent>
@@ -548,11 +532,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TE_Commissioner/VC/CheckRatePayingViewController.m"
-            timestampString = "443423523.747293"
+            timestampString = "443610165.449752"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
+            startingLineNumber = "264"
+            endingLineNumber = "264"
             landmarkName = "-showDatePicker"
             landmarkType = "5">
          </BreakpointContent>
@@ -564,11 +548,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TE_Commissioner/VC/CheckRatePayingViewController.m"
-            timestampString = "443423523.747293"
+            timestampString = "443610165.449752"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "252"
-            endingLineNumber = "252"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
             landmarkName = "-showDatePicker"
             landmarkType = "5">
          </BreakpointContent>
@@ -595,38 +579,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TE_Commissioner/VC/OpinionViewController.m"
-            timestampString = "443429548.745134"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "-submitClick:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TE_Commissioner/VC/OpinionViewController.m"
-            timestampString = "443429548.745134"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "-submitClick:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "TE_Commissioner/VC/CheckTransferViewController.m"
             timestampString = "443416844.18832"
             startingColumnNumber = "9223372036854775807"
@@ -644,11 +596,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TE_Commissioner/VC/ListDetailViewController.m"
-            timestampString = "442979756.831323"
+            timestampString = "443610165.449752"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "-switchVCWithIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -660,11 +612,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TE_Commissioner/VC/ListDetailViewController.m"
-            timestampString = "443084864.360313"
+            timestampString = "443610165.449752"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "-switchVCWithIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -692,11 +644,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TE_Commissioner/VC/CheckTransferViewController.m"
-            timestampString = "443423523.747293"
+            timestampString = "443610165.449752"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "243"
-            endingLineNumber = "243"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
             landmarkName = "-setLandCerSelected:"
             landmarkType = "5">
          </BreakpointContent>
@@ -708,11 +660,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TE_Commissioner/VC/CheckTransferViewController.m"
-            timestampString = "443423523.747293"
+            timestampString = "443610165.449752"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
+            startingLineNumber = "257"
+            endingLineNumber = "257"
             landmarkName = "-setLandCerSelected:"
             landmarkType = "5">
          </BreakpointContent>
@@ -740,11 +692,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TE_Commissioner/VC/ListDetailViewController.m"
-            timestampString = "442517731.122053"
+            timestampString = "443517507.934594"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "-requestList"
             landmarkType = "5">
          </BreakpointContent>
@@ -788,11 +740,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TE_Commissioner/VC/ListDetailTableViewCell.m"
-            timestampString = "443001438.409744"
+            timestampString = "443608949.598883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "-getHeight:"
             landmarkType = "5">
          </BreakpointContent>
@@ -836,11 +788,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TE_Commissioner/VC/ListDetailViewController.m"
-            timestampString = "442922197.711316"
+            timestampString = "443517507.934594"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "-requestList"
             landmarkType = "5">
          </BreakpointContent>
@@ -868,11 +820,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TE_Commissioner/VC/ListDetailTableViewCell.m"
-            timestampString = "443001438.409744"
+            timestampString = "443515777.593974"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "-getAttrString:"
             landmarkType = "5">
          </BreakpointContent>
@@ -950,11 +902,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TE_Commissioner/VC/MyWaitingToDoViewController.m"
-            timestampString = "443084864.360313"
+            timestampString = "443607913.200525"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
             landmarkName = "-requestList"
             landmarkType = "5">
          </BreakpointContent>
@@ -966,11 +918,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TE_Commissioner/VC/OrderRatepayingResultViewController.m"
-            timestampString = "443427871.045278"
+            timestampString = "443610165.449752"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "-requestSubmitInfoIsSubmit:"
             landmarkType = "5">
          </BreakpointContent>
@@ -982,11 +934,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TE_Commissioner/VC/CheckRatePayingViewController.m"
-            timestampString = "443423523.747293"
+            timestampString = "443610165.449752"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "273"
-            endingLineNumber = "273"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
             landmarkName = "-recordTypeDidSelect:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1074,7 +1026,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TE_Commissioner/VC/CheckTransferViewController.m"
@@ -1094,12 +1046,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TE_Commissioner/VC/MyWaitingToDoViewController.m"
-            timestampString = "443429121.708022"
+            timestampString = "443607913.200525"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "-requestList"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TE_Commissioner/VC/CheckTransferViewController.m"
+            timestampString = "443610165.449752"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
+            landmarkName = "-requestSubmitInfoIsSubmit:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TE_Commissioner/VC/SetInfoViewController.m"
+            timestampString = "443601765.514784"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "-btnClick:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TE_Commissioner/VC/LoginViewController.m"
+            timestampString = "443611447.928004"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "-loginClick:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TE_Commissioner/VC/MyWaitingToDoViewController.m"
+            timestampString = "443611491.881941"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
+            landmarkName = "-clickBtn:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
